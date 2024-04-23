@@ -134,6 +134,10 @@ def download_inpaint(inpaint_list, inpaint_dir):
     for inpaint_url in inpaint_list:
         download_file(inpaint_url, inpaint_dir)
 
+def download_ipadapter(ipadapter_list, ipadapter_dir):
+    for ipadapter_url in ipadapter_list:
+        download_file(ipadapter_url, ipadapter_dir)
+
 def download_shared_models():
     subprocess.run(['wget', '-q', 'https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors', '-P', f'{comfyui_dir}/models/clip_vision/SD1.5'])
     
@@ -174,6 +178,7 @@ def main():
     download_controlnet(controlnet_list, controlnet_dir)
     download_upscaler(upscaler_list, upscaler_dir)
     download_inpaint(inpaint_list, inpaint_dir)
+    download_ipadapter(ipadapter_list, ipadapter_dir)
     download_shared_models()
     os.chdir(comfyui_dir)
 
