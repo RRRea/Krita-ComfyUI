@@ -91,7 +91,11 @@ def clone_nodes(nodes_list, nodes_dir):
     for nodes_url in nodes_list:
         repo_name = nodes_url.split("/")[-1]
         repo_dir = os.path.join(nodes_dir, repo_name)
-        subprocess.run(['git', 'clone', nodes_url, repo_dir])
+        clone_command = ['git', 'clone']
+        if nodes_url == "https://github.com/ssitu/ComfyUI_UltimateSDUpscale":
+            clone_command.append('--recursive')
+        clone_command.extend([nodes_url, repo_dir])
+        subprocess.run(clone_command)
 
 def download_model(model_list, models_dir):
     for model_url in model_list:
