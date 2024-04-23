@@ -28,12 +28,15 @@ vae_list = [
 
 #Lora
 lora_list = [
-    "https://huggingface.co/Linaqruf/anime-detailer-xl-lora/resolve/main/anime-detailer-xl.safetensors"
+    "https://huggingface.co/Linaqruf/anime-detailer-xl-lora/resolve/main/anime-detailer-xl.safetensors",
+    "https://huggingface.co/latent-consistency/lcm-lora-sdv1-5/resolve/main/pytorch_lora_weights.safetensors",
+    "https://huggingface.co/latent-consistency/lcm-lora-sdxl/resolve/main/pytorch_lora_weights.safetensors"
 ]
 
 #ControlNet
 controlnet_list = [
-    ""
+    "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors",
+    "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_lora_rank128_v11f1e_sd15_tile_fp16.safetensors"
 ]
 
 #Upscaler
@@ -53,6 +56,11 @@ inpaint_list = [
     "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v26.fooocus.patch"
 ]
 
+ipadapter_list = [
+    "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors",
+    "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors"
+]
+
 root_dir               = "/kaggle/working"
 comfyui_dir            = os.path.join(root_dir,      "ComfyUI")
 nodes_dir              = os.path.join(comfyui_dir,   "custom_nodes")
@@ -62,6 +70,7 @@ lora_dir               = os.path.join(comfyui_dir,   "models", "loras")
 controlnet_dir         = os.path.join(comfyui_dir,   "models", "controlnet")
 upscaler_dir           = os.path.join(comfyui_dir,   "models", "upscale_models")
 inpaint_dir            = os.path.join(comfyui_dir,   "models", "inpaint")
+ipadapter_dir          = os.path.join(comfyui_dir,   "models", "ipadapter")
 
 def clone_repo(branch, repo_url, comfyui_dir):
     subprocess.run(['git', 'clone', '-b', branch, repo_url, comfyui_dir])
@@ -84,6 +93,10 @@ def prepare_environment():
 
 def download_file(url, output_dir):
     filename = url.split("/")[-1]
+    if "lcm-lora-sdv1-5" in url:
+        filename = "lcm-lora-sdv1-5.safetensors"
+    elif "lcm-lora-sdxl" in url:
+        filename = "lcm-lora-sdxl.safetensors"
     output_path = os.path.join(output_dir, filename)
     subprocess.run(['aria2c', '--console-log-level=error', '-c', '-x', '16', '-s', '16', '-k', '1M', url, '-d', output_dir, '-o', filename])
 
@@ -123,9 +136,7 @@ def download_inpaint(inpaint_list, inpaint_dir):
 
 def download_shared_models():
     subprocess.run(['wget', '-q', 'https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors', '-P', f'{comfyui_dir}/models/clip_vision/SD1.5'])
-    subprocess.run(['wget', '-q', 'https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors', '-P', f'{comfyui_dir}/models/ipadapter'])
-    subprocess.run(['wget', '-q', 'https://huggingface.co/latent-consistency/lcm-lora-sdxl/resolve/main/pytorch_lora_weights.safetensors', '-P', f'{comfyui_dir}/models/loras', '-O', 'lcm-lora-sdxl.safetensors'])
-
+    
 def launch():
     import cloudpickle as pickle
     import re
