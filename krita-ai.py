@@ -36,7 +36,8 @@ lora_list = [
 #ControlNet
 controlnet_list = [
     "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors",
-    "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_lora_rank128_v11f1e_sd15_tile_fp16.safetensors"
+    "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_lora_rank128_v11f1e_sd15_tile_fp16.safetensors",
+    "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/t2i-adapter_diffusers_xl_openpose.safetensors"
 ]
 
 #Upscaler
@@ -78,7 +79,6 @@ def clone_repo(branch, repo_url, comfyui_dir):
 def install_dependencies():
     subprocess.run(['apt-get', 'install', '-qq', 'lz4', '-y'])
     subprocess.run(['npm', 'install', '-g', 'localtunnel'])
-    subprocess.run(['pip', 'install', '-U', 'torch==2.2.2', 'torchvision', 'torchaudio', '--index-url', 'https://download.pytorch.org/whl/cu121'])
     subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops'])
     subprocess.run(['pip', 'install', 'onnxruntime-gpu', '--extra-index-url', 'https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/'])
     subprocess.run(['gdown', 'https://drive.google.com/uc?id=1G2Es3h34jrhoC1IEc3pVHEk53XMQjm-m', '-O', '/tmp/ComfyUI/tunnel'])
