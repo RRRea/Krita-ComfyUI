@@ -61,7 +61,7 @@ ipadapter_list = [
     "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors"
 ]
 
-root_dir               = "/kaggle/working"
+root_dir               = "/tmp"
 comfyui_dir            = os.path.join(root_dir,      "ComfyUI")
 nodes_dir              = os.path.join(comfyui_dir,   "custom_nodes")
 models_dir             = os.path.join(comfyui_dir,   "models", "checkpoints")
@@ -81,7 +81,7 @@ def install_dependencies():
     subprocess.run(['pip', 'install', '-U', 'torch==2.2.2', 'torchvision', 'torchaudio', '--index-url', 'https://download.pytorch.org/whl/cu121'])
     subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops'])
     subprocess.run(['pip', 'install', 'onnxruntime-gpu', '--extra-index-url', 'https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/'])
-    subprocess.run(['gdown', 'https://drive.google.com/uc?id=1G2Es3h34jrhoC1IEc3pVHEk53XMQjm-m', '-O', '/kaggle/working/ComfyUI/tunnel'])
+    subprocess.run(['gdown', 'https://drive.google.com/uc?id=1G2Es3h34jrhoC1IEc3pVHEk53XMQjm-m', '-O', '/tmp/ComfyUI/tunnel'])
     subprocess.run(['curl', '-s', '-Lo', '/usr/bin/cl', 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64'])
     subprocess.run(['chmod', '+x', '/usr/bin/cl'])
 
