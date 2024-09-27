@@ -18,7 +18,7 @@ nodes_list = [
 
 #Models
 model_list = [
-    "https://huggingface.co/cagliostrolab/animagine-xl-3.1/resolve/main/animagine-xl-3.1.safetensors"
+    ""
 ]
 
 #Vae
