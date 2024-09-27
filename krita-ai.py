@@ -8,7 +8,7 @@ branch   = "master"
 
 #Nodes
 nodes_list = [
-    "https://github.com/ltdrdata/ComfyUI-Manager",
+    "https://github.com/RRRea/ComfyUI-Manager",
     "https://github.com/Fannovel16/comfyui_controlnet_aux",
     "https://github.com/cubiq/ComfyUI_IPAdapter_plus",
     "https://github.com/ssitu/ComfyUI_UltimateSDUpscale",
@@ -18,7 +18,7 @@ nodes_list = [
 
 #Models
 model_list = [
-    "https://huggingface.co/cagliostrolab/animagine-xl-3.1/resolve/main/animagine-xl-3.1.safetensors"
+    "https://huggingface.co/KBlueLeaf/Kohaku-XL-Zeta/resolve/main/kohaku-xl-zeta.safetensors"
 ]
 
 #Vae
@@ -80,7 +80,7 @@ def clone_repo(branch, repo_url, comfyui_dir):
 def install_dependencies():
     subprocess.run(['apt-get', 'install', '-qq', 'lz4', '-y'])
     subprocess.run(['npm', 'install', '-g', 'localtunnel'])
-    subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops'])
+    subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops', 'scikit-learn'])
     subprocess.run(['pip', 'install', 'onnxruntime-gpu', '--extra-index-url', 'https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/'])
     subprocess.run(['gdown', 'https://drive.google.com/uc?id=1G2Es3h34jrhoC1IEc3pVHEk53XMQjm-m', '-O', '/tmp/ComfyUI/tunnel'])
     subprocess.run(['curl', '-s', '-Lo', '/usr/bin/cl', 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64'])
