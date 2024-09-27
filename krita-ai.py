@@ -80,7 +80,7 @@ def clone_repo(branch, repo_url, comfyui_dir):
 def install_dependencies():
     subprocess.run(['apt-get', 'install', '-qq', 'lz4', '-y'])
     subprocess.run(['npm', 'install', '-g', 'localtunnel'])
-    subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops', 'scikit-learn'])
+    subprocess.run(['pip', 'install', 'aria2', 'gdown', 'torchsde', 'einops', 'scikit-learn', 'spandrel'])
     subprocess.run(['pip', 'install', 'onnxruntime-gpu', '--extra-index-url', 'https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/'])
     subprocess.run(['gdown', 'https://drive.google.com/uc?id=1G2Es3h34jrhoC1IEc3pVHEk53XMQjm-m', '-O', '/tmp/ComfyUI/tunnel'])
     subprocess.run(['curl', '-s', '-Lo', '/usr/bin/cl', 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64'])
