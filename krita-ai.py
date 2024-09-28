@@ -18,7 +18,7 @@ nodes_list = [
 
 #Models
 model_list = [
-    ""
+    "https://huggingface.co/bluepen5805/blue_pencil-XL/resolve/main/blue_pencil-XL-v7.0.0.safetensors"
 ]
 
 #Vae
