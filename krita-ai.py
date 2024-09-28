@@ -18,7 +18,7 @@ nodes_list = [
 
 #Models
 model_list = [
-    "https://huggingface.co/KBlueLeaf/Kohaku-XL-Zeta/resolve/main/kohaku-xl-zeta.safetensors"
+    ""
 ]
 
 #Vae
